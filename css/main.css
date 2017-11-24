@@ -7,9 +7,15 @@ body {
   color: #333;
 }
 
+/*
 #status {
   font-weight: bold;
   float: right;
+}
+*/
+
+.bold {
+  font-weight: bold;
 }
 
 .wrapper {
