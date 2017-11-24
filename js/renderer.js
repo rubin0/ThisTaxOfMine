@@ -11,9 +11,8 @@ function append(text)
 	child.innerHTML = text;
 
 	var searchEles = _gText.children;
-	if(searchEles.length > 15){
+	if(searchEles.length > 10){
 		searchEles[0].remove();
-		console.log("dsad");
 	}
 
     return child;
