@@ -5,17 +5,18 @@
     <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
-    <div id="status">
-        <p> STATUS</p>
-    	<p id="money">Money: 1000</p>
+      <div class="wrapper">
+    <div class="notifications">
+            <div id="text">
+                    <p id="start">You have to pay taxes.</p>
+                </div>
     </div>
-    <div id="text">
-    	<p id="start">You have to pay taxes.</p>
+    <div class="content">
+                    <p> STATUS</p>
+                    <p id="money">Money: 5000</p>
+                    <input type="button" onclick="onWork()" value="Work" />
     </div>
-    <div id="actions">
-    	<input type="button" onclick="onPayTaxes()" value="Pay Taxes" />
-    </div>
-
+</div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
