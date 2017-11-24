@@ -7,11 +7,18 @@ let money = document.getElementById("money");
 
 function append(text)
 {
-    let child = document.createElement('p');
-    child.innerHTML = text;
+	let child = document.createElement('p');
+	child.innerHTML = text;
+
+	var searchEles = _gText.children;
+	if(searchEles.length > 15){
+		searchEles[0].remove();
+		console.log("dsad");
+	}
 
     return child;
 }
+
 function checkGameOver()
 {
 	if (gMoney <= 0)
@@ -62,6 +69,5 @@ $( document ).ready(function() {
 	console.log( "Starting loop" );
 	setInterval(function(){ 
 		onPayTaxes();
-		console.log( "tt" );
 	}, 1000);
 });
