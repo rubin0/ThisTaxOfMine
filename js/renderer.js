@@ -48,7 +48,7 @@ function onPayTaxes()
 		return;
 	}
 	let t = Math.floor(gInitialMoney*0.9 * Math.random());
-	_gText.appendChild(append("You have paid " + t + " in taxes"));
+	_gText.appendChild(append("You have paid " + t + " in taxes")).className += "bold";
 	gMoney -= t;
 	gameloop();
 }
@@ -65,7 +65,7 @@ function onWork(){
 }
 
 $( document ).ready(function() {
-	console.log( "Starting loop" );
+	//console.log( "Starting loop" );
 	setInterval(function(){ 
 		onPayTaxes();
 	}, 1000);
