@@ -1,6 +1,7 @@
 gInitialMoney = 5000;
 gMoney = gInitialMoney;
 gIsGameOver = false;
+gRefreshInterval = null;
 
 let _gText = document.getElementById("text");
 let money = document.getElementById("money");
@@ -22,8 +23,10 @@ function checkGameOver()
 {
 	if (gMoney <= 0)
 	{
+		clearInterval(gRefreshInterval);
 		gIsGameOver = true;
 		_gText.appendChild(append("GAME OVER :("));
+		$("#bnRestart").show();
 	}
 }
 
@@ -32,7 +35,8 @@ function syncMoneyUI()
     money.innerHTML = "Money: " + gMoney;
 }
 
-function gameloop(){
+function gameloop()
+{
 	if (gIsGameOver)
 	{
 		return;
@@ -53,7 +57,8 @@ function onPayTaxes()
 	gameloop();
 }
 
-function onWork(){
+function onWork()
+{
 	if (gIsGameOver)
 	{
 		return;
@@ -64,9 +69,24 @@ function onWork(){
 	gameloop();
 }
 
+function onRestart()
+{
+	if (gIsGameOver)
+	{
+		_gText.innerHTML = '<p id="start">You have to pay taxes.</p>';
+		gMoney = gInitialMoney;
+		$("#bnRestart").hide();
+		gIsGameOver = false;
+		syncMoneyUI();
+		gRefreshInterval = setInterval(function(){
+			onPayTaxes();
+		}, 1000);
+	}
+}
+
 $( document ).ready(function() {
 	//console.log( "Starting loop" );
-	setInterval(function(){ 
+	gRefreshInterval = setInterval(function(){ 
 		onPayTaxes();
 	}, 1000);
 });

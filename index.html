@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html><head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>This Tax of Mine</title>
-    <link rel="stylesheet" href="./css/main.css">
-  </head>
-  <body>
-      <div class="wrapper">
-    <div class="notifications">
-            <div id="text">
+<html>
+    <head>
+	   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>This Tax of Mine</title>
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="notifications">
+                <div id="text">
                     <p id="start">You have to pay taxes.</p>
                 </div>
-    </div>
-    <div class="content bold">
-                    <p> STATUS</p>
-                    <p id="money">Money: 5000</p>
-                    <input type="button" onclick="onWork()" value="Work" />
-    </div>
-</div>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous">
-    </script>
-    <script src="./js/renderer.js"></script>
-</body></html>
+            </div>
+            <div class="content bold">
+                <p> STATUS</p>
+                <p id="money">Money: 5000</p>
+                <input type="button" onclick="onWork()" value="Work" />
+                <input id="bnRestart" type="button" onclick="onRestart()" value="Restart" style="display: none" />
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+        <script src="./js/renderer.js"></script>
+    </body>
+</html>
