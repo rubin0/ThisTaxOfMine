@@ -1,18 +1,43 @@
-
 body {
   background-color: #F8F8F8;
   font-family: monospace;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.2em;
-  margin: 15px;
   color: #333;
-  width:700px;
 }
 
 #status {
   font-weight: bold;
-  float:right;
+  float: right;
+}
+
+.wrapper {
+  margin: auto;
+  width: 700px;
+  padding: 20px 0 0 220px;
+  position: relative;
+}
+
+.notifications {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  height: 700px;
+  width: 200px;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  overflow: hidden;
+  height: 700px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
 }
 
 .cost {
@@ -24,10 +49,9 @@ body {
 }
 
 button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-    color: initial;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  color: initial;
 }
