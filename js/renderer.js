@@ -6,26 +6,13 @@ gRefreshInterval = null;
 let _gText = document.getElementById("text");
 let money = document.getElementById("money");
 
-function append(text)
-{
-	let child = document.createElement('p');
-	child.innerHTML = text;
-
-	var searchEles = _gText.children;
-	if(searchEles.length > 10){
-		searchEles[0].remove();
-	}
-
-    return child;
-}
-
 function checkGameOver()
 {
 	if (gMoney <= 0)
 	{
 		clearInterval(gRefreshInterval);
 		gIsGameOver = true;
-		_gText.appendChild(append("GAME OVER :("));
+		Notifications.create("GAME OVER :(");
 		$("#bnRestart").show();
 	}
 }
@@ -51,9 +38,9 @@ function onPayTaxes()
 	{
 		return;
 	}
-	let t = Math.floor(gInitialMoney*0.9 * Math.random());
-	_gText.appendChild(append("You have paid " + t + " in taxes")).className += "bold";
-	gMoney -= t;
+	let t = -Math.floor(gInitialMoney*0.9 * Math.random());
+	Notifications.create("You have paid " + t + " in taxes", t);
+	gMoney += t;
 	gameloop();
 }
 
@@ -64,7 +51,8 @@ function onWork()
 		return;
 	}
 	let wage = Math.floor(1000 * Math.random());
-	_gText.appendChild(append("You have gained " + wage + " $."));
+	Notifications.create("You have gained " + wage, wage);
+	console.log(_gText);
 	gMoney += wage;
 	gameloop();
 }
