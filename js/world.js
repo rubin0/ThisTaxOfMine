@@ -45,12 +45,11 @@ var World = {
             onPayTaxes();
             this.gametime = this.DAYS_TO_PAY;
         }
-
+        this.syncUI();
         this.checkGameOver();
         if (this.gIsGameOver) {
             return;
         }
-        this.syncUI();
     },
     checkGameOver: function () {
         if (World.money <= 0) {
