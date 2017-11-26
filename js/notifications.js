@@ -1,9 +1,10 @@
 var Notifications = {
     GAIN_CSS: "award",
     LOSS_CSS: "cost",
-    MAX_NOTIFICATIONS_NUMBER: 15,
+    MAX_NOTIFICATIONS_NUMBER: 12,
 
     init: function () {
+        this.parentDiv.innerHTML = '<p id="start">You have to pay taxes.</p>';
     },
     parentDiv: document.getElementById("text"),
     create: function (message, value) {
