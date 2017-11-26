@@ -41,9 +41,28 @@ body {
 }
 
 .column {
-  float: left;
-  width: 50%;
+  width: auto;
   padding: 10px;
+}
+
+.column.left {
+  float:left;
+}
+
+.column.right {
+  float:right;
+}
+
+.countdown {
+  /*
+  -webkit-transition: all 5s;
+  -moz-transition: all 5s;
+    -o-transition: all 5s;
+       transition: all 5s;
+         transition-timing-function : linear;*/
+  color: #f33;
+  font-size: 21px;
+
 }
 
 .cost {
