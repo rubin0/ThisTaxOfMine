@@ -1,72 +1,61 @@
-gInitialMoney = 5000;
-gMoney = gInitialMoney;
 gIsGameOver = false;
+gRefreshInterval = null;
 
 let _gText = document.getElementById("text");
 let money = document.getElementById("money");
 
-function append(text)
-{
-	let child = document.createElement('p');
-	child.innerHTML = text;
-
-	var searchEles = _gText.children;
-	if(searchEles.length > 10){
-		searchEles[0].remove();
-	}
-
-    return child;
-}
-
-function checkGameOver()
-{
-	if (gMoney <= 0)
-	{
+function checkGameOver() {
+	if (World.money <= 0) {
+		clearInterval(gRefreshInterval);
 		gIsGameOver = true;
-		_gText.appendChild(append("GAME OVER :("));
+		Notifications.create("GAME OVER :(");
+		$("#bnRestart").show();
 	}
 }
 
-function syncMoneyUI()
-{
-    money.innerHTML = "Money: " + gMoney;
-}
-
-function gameloop(){
-	if (gIsGameOver)
-	{
+function gameloop() {
+	if (gIsGameOver) {
 		return;
 	}
-	syncMoneyUI();
 	checkGameOver();
 }
 
-function onPayTaxes()
-{
-	if (gIsGameOver)
-	{
+function onPayTaxes() {
+	if (gIsGameOver) {
 		return;
 	}
-	let t = Math.floor(gInitialMoney*0.9 * Math.random());
-	_gText.appendChild(append("You have paid " + t + " in taxes"));
-	gMoney -= t;
+	let t = -Math.floor((World.money * 0.9 * Math.random()+50))	;
+	Notifications.create("You have paid " + t + " in taxes", t);
+	World.setMoney(t);
 	gameloop();
 }
 
-function onWork(){
-	if (gIsGameOver)
-	{
+function onWork() {
+	if (gIsGameOver) {
 		return;
 	}
 	let wage = Math.floor(1000 * Math.random());
-	_gText.appendChild(append("You have gained " + wage + " $."));
-	gMoney += wage;
+	Notifications.create("You have gained " + wage, wage);
+	World.setMoney(wage);
 	gameloop();
 }
 
-$( document ).ready(function() {
-	console.log( "Starting loop" );
-	setInterval(function(){ 
+function onRestart() {
+	if (gIsGameOver) {
+		_gText.innerHTML = '<p id="start">You have to pay taxes.</p>';
+		$("#bnRestart").hide();
+		gIsGameOver = false;
+		World.init();
+		gRefreshInterval = setInterval(function () {
+			onPayTaxes();
+		}, 1000);
+	}
+}
+
+$(document).ready(function () {
+	World.init();
+	//console.log( "Starting loop" );
+	gRefreshInterval = setInterval(function () {
 		onPayTaxes();
 	}, 1000);
 });

@@ -1,25 +1,42 @@
 <!DOCTYPE html>
-<html><head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>This Tax of Mine</title>
     <link rel="stylesheet" href="./css/main.css">
-  </head>
-  <body>
-      <div class="wrapper">
-    <div class="notifications">
-            <div id="text">
-                    <p id="start">You have to pay taxes.</p>
-                </div>
+</head>
+
+<body>
+    <div id="header" class="ascii-art">
+            $$$$$$$$\ $$\       $$\                 $$$$$$$$\                         $$$$$$\   $$$$$$\        $$\      $$\ $$\                     
+            \__$$  __|$$ |      \__|                \__$$  __|                       $$  __$$\ $$  __$$\       $$$\    $$$ |\__|                    
+               $$ |   $$$$$$$\  $$\  $$$$$$$\          $$ | $$$$$$\  $$\   $$\       $$ /  $$ |$$ /  \__|      $$$$\  $$$$ |$$\ $$$$$$$\   $$$$$$\  
+               $$ |   $$  __$$\ $$ |$$  _____|         $$ | \____$$\ \$$\ $$  |      $$ |  $$ |$$$$\           $$\$$\$$ $$ |$$ |$$  __$$\ $$  __$$\ 
+               $$ |   $$ |  $$ |$$ |\$$$$$$\           $$ | $$$$$$$ | \$$$$  /       $$ |  $$ |$$  _|          $$ \$$$  $$ |$$ |$$ |  $$ |$$$$$$$$ |
+               $$ |   $$ |  $$ |$$ | \____$$\          $$ |$$  __$$ | $$  $$<        $$ |  $$ |$$ |            $$ |\$  /$$ |$$ |$$ |  $$ |$$   ____|
+               $$ |   $$ |  $$ |$$ |$$$$$$$  |         $$ |\$$$$$$$ |$$  /\$$\        $$$$$$  |$$ |            $$ | \_/ $$ |$$ |$$ |  $$ |\$$$$$$$\ 
+               \__|   \__|  \__|\__|\_______/          \__| \_______|\__/  \__|       \______/ \__|            \__|     \__|\__|\__|  \__| \_______|
     </div>
-    <div class="content">
-                    <p> STATUS</p>
-                    <p id="money">Money: 5000</p>
-                    <input type="button" onclick="onWork()" value="Work" />
+
+    <div class="wrapper">
+        <hr>
+        <div id="text" class="notifications">
+            <p id="start">You have to pay taxes.</p>
+        </div>
+        <div class="content bold">
+            <p> STATUS</p>
+            <p id="money"></p>
+            <input type="button" onclick="onWork()" value="Work" />
+            <input id="bnRestart" type="button" onclick="onRestart()" value="Restart" style="display: none" />
+        </div>
     </div>
-</div>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
-    </script>
+        </script>
+         <script src="./js/world.js"></script>
+    <script src="./js/notifications.js"></script>
     <script src="./js/renderer.js"></script>
-</body></html>
+</body>
+
+</html>
