@@ -4,21 +4,25 @@ var World = {
     DAYS_TO_PAY: 10,
     money: 0,
     gametime: 0,
+    score: 0,
     gRefreshInterval: null,
     gIsGameOver: false,
     moneyDiv: document.getElementById('money'),
     timeDiv: document.getElementById('time'),
+    scoreDiv: document.getElementById('scoretime'),
     init: function () {
         $('#bnRestart').hide();
 
         this.gametime = this.DAYS_TO_PAY;
+        this.score = 0;
         Notifications.init();
 
         this.setMoney(5000);
         this.syncUI();
 
-        this.gIsGameOver = false;
-
+        this.gIsGameOver = false; 
+    },
+    start: function (){
         this.gRefreshInterval = setInterval(function () {
             World.gameloop();
         }, 1000);
@@ -32,6 +36,7 @@ var World = {
     syncUI: function () {
         this.moneyDiv.innerText = 'Money: ' + this.money;
         this.timeDiv.innerText = this.gametime;
+        this.scoreDiv.innerText = this.score;
         if(this.timeDiv.innerText >= 0 && this.timeDiv.innerText <= 5){
             this.timeDiv.className = 'countdown';
         } else {
@@ -45,6 +50,7 @@ var World = {
             onPayTaxes();
             this.gametime = this.DAYS_TO_PAY;
         }
+        this.score++;
         this.syncUI();
         this.checkGameOver();
         if (this.gIsGameOver) {
