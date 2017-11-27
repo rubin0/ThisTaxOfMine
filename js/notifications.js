@@ -1,3 +1,5 @@
+'use strict';
+
 var Notifications = {
     GAIN_CSS: "award",
     LOSS_CSS: "cost",
@@ -26,8 +28,4 @@ var Notifications = {
             notifications[0].remove();
         }
     }
-
-
-
-
-}
+};
