@@ -1,8 +1,6 @@
-'use strict';
 
 var World = {
-    DAYS_TO_PAY: 10,
-    money: 0,
+    DAYS_TO_PAY: 30,
     gametime: 0,
     score: 0,
     gRefreshInterval: null,
@@ -10,12 +8,25 @@ var World = {
     moneyDiv: document.getElementById('money'),
     timeDiv: document.getElementById('time'),
     scoreDiv: document.getElementById('scoretime'),
+    player: {
+        productivity: 1,
+        baseIncome: 50,
+        money: 0,
+    },
+    tax: {
+        incomeTax: () => {
+            return Math.floor(World.player.money * 0.7);
+        },
+        totalTax: () => {
+            return World.tax.incomeTax();
+        }
+    },
     init: function () {
         this.gametime = this.DAYS_TO_PAY;
         this.score = 0;
         Notifications.init();
 
-        this.setMoney(5000);
+        this.setMoney(1000);
         this.syncUI();
 
         this.gIsGameOver = false;
@@ -26,13 +37,13 @@ var World = {
         }, 1000);
     },
     addMoney: function (amount) {
-        this.money += amount;
+        this.player.money += amount;
     },
     setMoney: function (amount) {
-        this.money = amount;
+        this.player.money = amount;
     },
     syncUI: function () {
-        this.moneyDiv.innerText = 'Money: ' + this.money;
+        this.moneyDiv.innerText = 'Money: ' + this.player.money;
         this.timeDiv.innerText = this.gametime;
         this.scoreDiv.innerText = this.score;
         if (this.timeDiv.innerText >= 0 && this.timeDiv.innerText <= 5) {
@@ -56,7 +67,7 @@ var World = {
         }
     },
     checkGameOver: function () {
-        if (World.money <= 0) {
+        if (this.player.money <= 0) {
             this.gIsGameOver = true;
             clearInterval(this.gRefreshInterval);
             Notifications.create('GAME OVER :(');
@@ -67,15 +78,15 @@ var World = {
         if (World.gIsGameOver) {
             return;
         }
-        let t = -Math.floor((World.money * 0.9 * Math.random() + 50));
+        let t = -Math.floor(World.tax.totalTax());
         Notifications.create("You have paid " + Math.abs(t) + " in taxes", t);
         World.addMoney(t);
     },
-    onWork: function () {
+    onWork: () => {
         if (World.gIsGameOver) {
             return;
         }
-        let wage = Math.floor(1000 * Math.random());
+        let wage = Math.floor(World.player.baseIncome * World.player.productivity * Math.random());
         Notifications.create("You have gained " + wage, wage);
         World.addMoney(wage);
         World.syncUI();
