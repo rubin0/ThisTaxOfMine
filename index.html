@@ -9,6 +9,7 @@
 
 <body>
     <pre id="header" class="ascii-art">
+
             $$$$$$$$\ $$\       $$\                 $$$$$$$$\                         $$$$$$\   $$$$$$\        $$\      $$\ $$\                     
             \__$$  __|$$ |      \__|                \__$$  __|                       $$  __$$\ $$  __$$\       $$$\    $$$ |\__|                    
                $$ |   $$$$$$$\  $$\  $$$$$$$\          $$ | $$$$$$\  $$\   $$\       $$ /  $$ |$$ /  \__|      $$$$\  $$$$ |$$\ $$$$$$$\   $$$$$$\  
@@ -17,7 +18,8 @@
                $$ |   $$ |  $$ |$$ | \____$$\          $$ |$$  __$$ | $$  $$<        $$ |  $$ |$$ |            $$ |\$  /$$ |$$ |$$ |  $$ |$$   ____|
                $$ |   $$ |  $$ |$$ |$$$$$$$  |         $$ |\$$$$$$$ |$$  /\$$\        $$$$$$  |$$ |            $$ | \_/ $$ |$$ |$$ |  $$ |\$$$$$$$\ 
                \__|   \__|  \__|\__|\_______/          \__| \_______|\__/  \__|       \______/ \__|            \__|     \__|\__|\__|  \__| \_______|
-    </pre>
+    
+            </pre>
     <div class="wrapper">
         <hr>
         <div id="text" class="notifications">
@@ -27,8 +29,8 @@
             <div class="column left">
                 <p> STATUS</p>
                 <p id="money"></p>
-                <input type="button" onclick="onWork()" value="Work" />
-                <input id="bnRestart" type="button" onclick="onRestart()" value="Restart" style="display: none" />
+                <input id="bnWork" type="button" onclick="World.onWork()" value="Work" style="display: none" />
+                <input id="bnRestart" type="button" onclick="World.onRestart()" value="Restart" style="display: none" />
             </div>
             <div class="column right">
                 <p> SCORE</p>
@@ -43,7 +45,7 @@
         <div>
             <p id="errorUsername" class="bold cost" style="display: none"> </p>
             <input id="inputStart" type="input" placeholder="Cocco Bill" />
-            <input id="bnStart" type="button" onclick="onStart()" value="Start" />
+            <input id="bnStart" type="button" onclick="World.onStart()" value="Start" />
             <p id="username" class="bold" style="display: none"> </p>
         </div>
         </header>
@@ -52,7 +54,6 @@
             </script>
         <script src="./js/world.js"></script>
         <script src="./js/notifications.js"></script>
-        <script src="./js/renderer.js"></script>
 </body>
 
 </html>
